@@ -1,6 +1,6 @@
 " ---------------------------------------------------------------------
 " File: bro.vim
-" Birthday: Wed Aug 03 10:41:01 PDT 2005 
+" Birthday: Wed Aug 03 10:41:01 PDT 2005
 " Author: Martin Casado
 "         (... also without a clue about writing VIM syntax files
 "           thanks python.vim & c.vim!)
@@ -29,9 +29,9 @@ syn keyword broStatement     function nextgroup=broFunction skipwhite
 syn keyword broStatement     event nextgroup=broFunction skipwhite
 syn match   broFunction      "[a-zA-Z_][a-zA-Z0-9_]*" contained
 
-syn keyword broType          addr any bool count 
-syn keyword broType          double enum 
-syn keyword broType          file int interval 
+syn keyword broType          addr any bool count
+syn keyword broType          double enum
+syn keyword broType          file int interval
 syn keyword broType          pattern
 syn keyword broType          port record set
 syn keyword broType          string subnet table
@@ -53,6 +53,7 @@ syn match     cSpecial        display contained "\\\(x\x\+\|\o\{1,3}\|.\|$\)"
 syn match     cFormat         display "%\(\d\+\$\)\=[-+' #0*]*\(\d*\|\*\|\*\d\+\$\)\(\.\(\d*\|\*\|\*\d\+\$\)\)\=\([bdiuoxXDOUfeEgGcCsSpn]\|\[\^\=.[^]]*\]\)" contained
 syn match     cFormat         display "%%" contained
 syn region    cString         start=+L\="+ skip=+\\\\\|\\"+ end=+"+ contains=cSpecial,cFormat,@Spell,broEscape
+syn region    broPattern      start=+/[^/*]+me=e-1 skip=+\\\\\|\\/+ end=+/[gim]\{0,2\}\s*$+ end=+/[gim]\{0,2\}\s*[;.,)\]}]+me=e-1 oneline
 
 syn match  broEscape         +\\[abfnrtv'"\\]+ contained
 syn match  broEscape         "\\\o\{1,3}" contained
@@ -90,10 +91,11 @@ if version >= 508 || !exists("did_bro_syn_inits")
   HiLink broTodo             Todo
   HiLink broNumber           Number
   HiLink broOperator         Operator
-  HiLink broStorageClass     StorageClass 
-  HiLink broInterval         Number 
+  HiLink broStorageClass     StorageClass
+  HiLink broInterval         Number
   HiLink broPort             Number
   HiLink cString             String
+  HiLink broPattern          String
   HiLink cFormat             cSpecial
   HiLink cSpecial            SpecialChar
 
